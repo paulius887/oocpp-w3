@@ -12,6 +12,7 @@ int main () {
     b.setRandomPassword();
     b.setEmail("pewdiepie@gmail.com");
     cout << a.toString() << endl << b.toString();
+    b.setPassword("Password123"); // exception (no special character)
     }
     catch (string err) {
         cout << err << endl;
