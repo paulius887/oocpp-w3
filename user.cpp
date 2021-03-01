@@ -164,9 +164,7 @@ void User::setNickname (string new_nickname) {
         for (unsigned i = 0; i < new_nickname.length(); ++i) {
             if (isSpecialCharacter(new_nickname[i])) {
                 if (new_nickname[i] != '.' && new_nickname[i] != '_') { // characters . and _ are allowed in nicknames
-                    stringstream ss;
-                    ss << "setNickname received a string that has invalid characters in it (allowed characters: 0-9, A-Z, special symbols . and _";
-                    throw (ss.str());
+                    throw ("setNickname received a string that has invalid characters in it (allowed characters: 0-9, A-Z, special symbols . and _");
                 }
             }
         }
@@ -197,9 +195,7 @@ void User::setPassword (string new_password) {
             password = new_password;
         }
         else {
-            stringstream ss;
-            ss << "setPassword received a string that doesn't have an upper letter, a number and a special symbol in it";
-            throw (ss.str());
+            throw ("setPassword received a string that doesn't have an upper letter, a number and a special symbol in it");
         }
     }
     else {
@@ -218,9 +214,7 @@ void User::setEmail (string new_email) {
         email = new_email;
     }
     else {
-        stringstream ss;
-        ss << "setEmail received a string that didn't pass isEmail validation";
-        throw (ss.str());
+        throw ("setEmail received a string that didn't pass isEmail validation");
     }
 }
 
