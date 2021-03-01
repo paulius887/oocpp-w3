@@ -17,7 +17,7 @@ string User::createRandomPassword (int length_min, int length_max) {
     if (length_min < PW_MIN || length_max > PW_MAX) {
         stringstream ss;
         ss << "createrRandomPassword received an invalid length_min or length_max value (values must be " << PW_MIN << "-" << PW_MAX << ")";
-        throw (ss.str());
+        throw invalid_argument(ss.str());
     }
     srand(time(NULL));
     bool digit, uppercase, special;
@@ -164,7 +164,7 @@ void User::setNickname (string new_nickname) {
         for (unsigned i = 0; i < new_nickname.length(); ++i) {
             if (isSpecialCharacter(new_nickname[i])) {
                 if (new_nickname[i] != '.' && new_nickname[i] != '_') { // characters . and _ are allowed in nicknames
-                    throw ("setNickname received a string that has invalid characters in it (allowed characters: 0-9, A-Z, special symbols . and _");
+                    throw invalid_argument("setNickname received a string that has invalid characters in it (allowed characters: 0-9, A-Z, special symbols . and _");
                 }
             }
         }
@@ -173,7 +173,7 @@ void User::setNickname (string new_nickname) {
     else {
         stringstream ss;
         ss << "setNickname received a string that's either too long or too short (length must be " << NAME_MIN << "-" << NAME_MAX << ")";
-        throw (ss.str());
+        throw invalid_argument(ss.str());
     }
 }
 
@@ -195,13 +195,13 @@ void User::setPassword (string new_password) {
             password = new_password;
         }
         else {
-            throw ("setPassword received a string that doesn't have an upper letter, a number and a special symbol in it");
+            throw invalid_argument("setPassword received a string that doesn't have an upper letter, a number and a special symbol in it");
         }
     }
     else {
         stringstream ss;
         ss << "setPassword received a string that's either too long or too short (length must be " << PW_MIN << "-" << PW_MAX << ")";
-        throw (ss.str());
+        throw invalid_argument(ss.str());
     }
 }
 
@@ -214,7 +214,7 @@ void User::setEmail (string new_email) {
         email = new_email;
     }
     else {
-        throw ("setEmail received a string that didn't pass isEmail validation");
+        throw invalid_argument("setEmail received a string that didn't pass isEmail validation");
     }
 }
 
