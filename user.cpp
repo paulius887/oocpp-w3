@@ -2,7 +2,7 @@
 
 namespace user {
 
-int User::customRandom (int min, int max){ // stackoverflow.com/questions/12657962
+int User::customRandom (int min, int max) { // stackoverflow.com/questions/12657962
     int n = max - min + 1;
     int remainder = RAND_MAX % n;
     int x;
