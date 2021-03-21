@@ -64,7 +64,6 @@ namespace user {
         bool isUsername (const string &username) const;
         bool isUsernameNotTaken (const string &username) const;
         bool isSpecialCharacter (const char &c) const;
-        int getPasswordRating (const string &input_password) const;
 
         friend class User;
         friend istream& operator>> (istream &o, User &user);
@@ -156,30 +155,6 @@ namespace user {
         }
         else {
             return 0;
-        }
-    }
-
-    int User::InnerUser::getPasswordRating (const string &input_password) const {
-        int password_rating = 0; // <25 - return 0, <40 - return 1, <55 - return 2, >=70 - return 3
-        for (unsigned i = 0; i < input_password.length(); ++i) {
-            if (islower(input_password[i])) {
-                password_rating += 2;
-            }
-            else if (isdigit(input_password[i]) || isupper(input_password[i])) {
-                password_rating += 3;
-            }
-            else if (isSpecialCharacter(input_password[i])) {
-                password_rating += 5;
-            }
-        }
-        if (password_rating < 25) {
-            return 0;
-        }
-        else if (password_rating >= 70) {
-            return 3;
-        }
-        else {
-            return (password_rating - 24) / 15;
         }
     }
 
@@ -475,7 +450,7 @@ namespace user {
         oss << "level " << getLevel() << endl;
         oss << "email '" << getEmail() << "'" << endl;
         oss << "username '" << getUsername() << "'" << endl;
-        oss << "password '" << getPassword() << "' passwordRating(password) = " << inner->getPasswordRating(inner->password) << endl;
+        oss << "password '" << getPassword() << "'" << endl;
         cout << endl;
         return oss.str();
     }
