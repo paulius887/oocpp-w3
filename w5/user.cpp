@@ -32,7 +32,6 @@ namespace user {
         string msg;
     public:
         InitException(const string &arg, const char *file, int line);
-        ~InitException();
         const char *what() const noexcept;
     };
 
@@ -40,9 +39,6 @@ namespace user {
         ostringstream oss;
         oss << file << ":" << line << ": " << arg;
         msg = oss.str();
-    }
-
-    InitException::~InitException() {
     }
 
     const char* InitException::what() const noexcept {
