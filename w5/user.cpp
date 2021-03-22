@@ -162,7 +162,6 @@ namespace user {
     }
 
     User::InnerUser::~InnerUser () {
-        cout << endl;
         if (username.size() && email.size()) {
             for (unsigned i = 0; i < takenEmails.size(); ++i) {
                 if (*(takenEmails[i]) == email) {
