@@ -27,7 +27,7 @@ namespace user {
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    class InitException : public runtime_error { // https://stackoverflow.com/questions/348833
+    class InitException : public runtime_error {
     private:
         string msg;
     public:
@@ -198,7 +198,7 @@ namespace user {
         delete inner;
     }
 
-    int User::generateRandomNumber (const int &min, const int &max) { // stackoverflow.com/questions/12657962
+    int User::generateRandomNumber (const int &min, const int &max) {
         int n = max - min + 1;
         int remainder = RAND_MAX % n;
         int x;
